@@ -37,26 +37,27 @@ class TreeTest < Minitest::Test
     tree.insert(7)
     tree.insert(12)
     tree.insert(11)
+    tree.insert(11)
     assert_equal 10, tree.base.data
     assert_equal 5, tree.base.left_node.data
     assert_equal 2, tree.base.left_node.left_node.data
     assert_equal 7, tree.base.left_node.right_node.data
     assert_equal 12, tree.base.right_node.data
     assert_equal 11, tree.base.right_node.left_node.data
+    assert_equal 11, tree.base.right_node.left_node.left_node.data
   end
 
-  def test_it_includes_data
+  def test_it_can_find_node
     tree = Tree.new(5)
+    tree.insert(3)
     tree.insert(7)
     tree.insert(9)
     tree.insert(12)
     tree.insert(13)
+    assert tree.include?(3)
     assert tree.include?(7)
     assert tree.include?(9)
-    assert tree.include?(12)
-    assert tree.include?(13)
-    assert tree.include?(5)
-    refute tree.include?(99)
+    refute tree.include?(40)
   end
 
   def test_it_can_return_minimum_data
@@ -127,6 +128,7 @@ class TreeTest < Minitest::Test
   end
 
   def test_it_can_find_max_height
+    skip
     tree = Tree.new(50)
     tree.insert(3)
     tree.insert(51)

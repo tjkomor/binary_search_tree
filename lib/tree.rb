@@ -50,15 +50,19 @@ class Tree
   def insert(data)
     current = @base
     @array << data
-    if data < current.data
+    if data <= current.data
       insert_left(current, data)
     else
       insert_right(current, data)
     end
   end
 
-  def include?(data)
-    @array.include?(data)
+  def find(number)
+    @base.find(number)
+  end
+
+  def include?(number)
+    find(number).class == Node
   end
 
   def minimum
@@ -99,9 +103,5 @@ class Tree
   end
 
   def max_height
-    
-  end
-
-  def delete_right(data)
   end
 end
