@@ -1,7 +1,7 @@
 require_relative 'node'
 class Tree
 
-  attr_accessor :base
+  attr_accessor :base, :array
   def initialize(data)
     @base = Node.new(data)
     @array = [@base.data]
@@ -39,14 +39,11 @@ class Tree
     until data == current.data
       if data < current.data
         current = current.left_node
-      #compare 21 to 3
       else
         current = current.right_node
       end
       counter += 1
-      # return "max count reached" if counter == data
     end
-
     counter
   end
 
@@ -78,5 +75,33 @@ class Tree
       current = current.right_node
     end
     current.data
+  end
+
+  def count
+    @array.count
+  end
+
+  def sort
+    iterate = @array.count - 1
+    loop do
+      swapped = 0
+      iterate.times do |index|
+        if array[index] > array[index + 1]
+          array[index], array[index + 1] = array[index + 1], array[index]
+          swapped = 1
+        end
+      end
+      if swapped == 0
+        break
+      end
+    end
+    array
+  end
+
+  def max_height
+    
+  end
+
+  def delete_right(data)
   end
 end
