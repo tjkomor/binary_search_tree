@@ -7,46 +7,56 @@ class Tree
     @array = [@base.data]
   end
 
-  def insert_right(data)
-    current = @base
-    @array << data
-    until current.right_node.nil?
-      current = current.right_node
+  def insert_right(node, data)
+    current = node
+    if current.right_node.nil?
+      return current.right_node = Node.new(data)
     end
+    current = current.right_node
     if data < current.data
-      current.left_node = Node.new(data)
+      insert_left(current, data)
     else
-      current.right_node = Node.new(data)
+      insert_right(current, data)
     end
   end
 
-  def insert_left(data)
-    current = @base
-    @array << data
-    until current.left_node.nil?
-      current = current.left_node
+  def insert_left(node, data)
+    current = node
+    if current.left_node.nil?
+      return current.left_node = Node.new(data)
     end
+    current = current.left_node
     if data > current.data
-      current.right_node = Node.new(data)
+      insert_right(current, data)
     else
-      current.left_node = Node.new(data)
+      insert_left(current, data)
     end
+  end
 
-    def depth_of(data)
-      current = @base
-      counter = 0
-      until data == current.data
-        counter += 1
+  def depth_of(data)
+    current = @base
+    counter = 1
+    until data == current.data
+      if data < current.data
+        current = current.left_node
+      #compare 21 to 3
+      else
+        current = current.right_node
       end
-
+      counter += 1
+      # return "max count reached" if counter == data
     end
+
+    counter
   end
 
   def insert(data)
-    if data < @base.data
-      insert_left(data)
+    current = @base
+    @array << data
+    if data < current.data
+      insert_left(current, data)
     else
-      insert_right(data)
+      insert_right(current, data)
     end
   end
 

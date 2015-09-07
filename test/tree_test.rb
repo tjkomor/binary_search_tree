@@ -17,7 +17,7 @@ class TreeTest < Minitest::Test
     tree.insert(6)
     assert_equal 5, tree.base.left_node.data
     assert_equal 2, tree.base.left_node.left_node.data
-    assert_equal 6, tree.base.left_node.left_node.right_node.data
+    assert_equal 6, tree.base.left_node.right_node.data
   end
 
   def test_it_can_insert_nodes_to_right_of_base
@@ -40,7 +40,7 @@ class TreeTest < Minitest::Test
     assert_equal 10, tree.base.data
     assert_equal 5, tree.base.left_node.data
     assert_equal 2, tree.base.left_node.left_node.data
-    assert_equal 7, tree.base.left_node.left_node.right_node.data
+    assert_equal 7, tree.base.left_node.right_node.data
     assert_equal 12, tree.base.right_node.data
     assert_equal 11, tree.base.right_node.left_node.data
   end
@@ -89,8 +89,12 @@ class TreeTest < Minitest::Test
     tree.insert(23)
     tree.insert(21)
     tree.insert(700)
-    tree.insert(650)
-    assert_equal , tree.depth_of(23)
-
+    assert_equal 3, tree.depth_of(23)
+    assert_equal 1, tree.depth_of(50)
+    assert_equal 2, tree.depth_of(150)
+    assert_equal 3, tree.depth_of(700)
+    assert_equal 3, tree.depth_of(-1)
+    assert_equal 4, tree.depth_of(21)
   end
+
 end
