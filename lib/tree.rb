@@ -2,7 +2,7 @@ require_relative 'node'
 class Tree
 
   attr_accessor :base, :array
-  def initialize(data)
+  def initialize(data = nil)
     @base = Node.new(data)
     @array = [@base.data]
   end

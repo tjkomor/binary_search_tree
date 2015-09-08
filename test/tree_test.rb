@@ -10,6 +10,11 @@ class TreeTest < Minitest::Test
     assert_equal 3, tree.base.data
   end
 
+  def test_it_can_initialize_with_no_data
+    tree = Tree.new
+    assert_equal nil, tree.base.data
+  end
+
   def test_it_can_insert_nodes_to_left_of_base
     tree = Tree.new(7)
     tree.insert(5)
@@ -107,16 +112,6 @@ class TreeTest < Minitest::Test
     tree.insert(150)
     tree.insert(70)
     assert_equal 5, tree.count
-  end
-
-  def test_it_can_delete_nodes
-    skip
-    tree = Tree.new(50)
-    tree.insert(3)
-    tree.insert(7)
-    tree.insert(51)
-    tree.insert(150)
-    assert_equal 200, tree.base.right_node.right_node.data
   end
 
   def test_it_can_sort_leaves_on_tree
