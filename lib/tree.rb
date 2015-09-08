@@ -57,12 +57,12 @@ class Tree
     end
   end
 
-  def find(number)
+  def find_object(number)
     @base.find(number)
   end
 
   def include?(number)
-    find(number).class == Node
+    find_object(number).class == Node
   end
 
   def minimum
@@ -79,6 +79,21 @@ class Tree
       current = current.right_node
     end
     current.data
+  end
+
+  def delete(data)
+    current = @base
+    if data > current.data
+      if find_object(data).right_node.nil?
+        current.right_node = nil
+      else
+        until current.right_node.data == find_object(data).data
+          current = current.right_node
+        end
+        current.right_node.data = find_object(data).right_node.data
+        current.right_node.data
+      end
+    end
   end
 
   def count

@@ -98,17 +98,6 @@ class TreeTest < Minitest::Test
     assert_equal 4, tree.depth_of(21)
   end
 
-  def test_it_can_delete_node
-    skip
-    tree = Tree.new(50)
-    tree.insert(3)
-    tree.insert(51)
-    tree.insert(150)
-    tree.insert(70)
-    tree.delete(150)
-    assert_equal 70, tree.base.right_node.right_node.data
-  end
-
   def test_it_can_count_leaves_in_tree
     tree = Tree.new(50)
     tree.insert(3)
@@ -116,6 +105,20 @@ class TreeTest < Minitest::Test
     tree.insert(150)
     tree.insert(70)
     assert_equal 5, tree.count
+  end
+
+  def test_it_can_delete_nodes
+    tree = Tree.new(50)
+    tree.insert(3)
+    tree.insert(7)
+    tree.insert(51)
+    tree.insert(150)
+    tree.insert(87)
+    tree.insert(31)
+    tree.insert(200)
+    tree.delete(150)
+    tree.delete(3)
+    assert_equal 200, tree.base.right_node.right_node.data
   end
 
   def test_it_can_sort_leaves_on_tree
