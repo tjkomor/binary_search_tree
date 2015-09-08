@@ -1,10 +1,12 @@
 require_relative 'node'
 class Tree
 
-  attr_accessor :base, :array
+  attr_accessor :base, :array, :counter
   def initialize(data)
     @base = Node.new(data)
     @array = [@base.data]
+    @count_right = 1
+    @count_left = 1
   end
 
   def insert_right(node, data)
@@ -118,5 +120,9 @@ class Tree
   end
 
   def max_height
+    depths = @array.map do |num|
+      depth_of(num)
+    end
+    depths.max
   end
 end

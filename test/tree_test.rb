@@ -131,15 +131,13 @@ class TreeTest < Minitest::Test
   end
 
   def test_it_can_find_max_height
-    skip
-    tree = Tree.new(50)
-    tree.insert(3)
-    tree.insert(51)
-    tree.insert(150)
-    tree.insert(70)
-    tree.insert(4)
-    tree.insert(6)
-    tree.insert(9)
+    tree = Tree.new(100)
+    tree.insert(90)
+    tree.insert(23)
+    tree.insert(1134)
+    tree.insert(93)
+    tree.insert(45)
+    tree.insert(76)
     assert_equal 5, tree.max_height
   end
 
