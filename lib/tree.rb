@@ -1,12 +1,10 @@
 require_relative 'node'
 class Tree
 
-  attr_accessor :base, :array, :counter
+  attr_accessor :base, :array
   def initialize(data)
     @base = Node.new(data)
     @array = [@base.data]
-    @count_right = 1
-    @count_left = 1
   end
 
   def insert_right(node, data)
