@@ -28,7 +28,7 @@ class NodeTest < Minitest::Test
     node.right_node.left_node = Node.new(6)
     node.left_node = Node.new(2)
     node.left_node.left_node = Node.new(1)
-    assert_equal node, node.find_node_object(5)
+    assert_equal node, node.find(5)
     assert_equal node.right_node, node.find(8)
     assert_equal node.left_node, node.find(2)
     assert_equal node.left_node.left_node, node.find(1)
